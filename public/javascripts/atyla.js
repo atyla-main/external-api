@@ -5,7 +5,7 @@ btn.style.width = '100%';
 btn.style.color = '#fff';
 btn.style.border = 'none';
 btn.style.outline = 'none';
-btn.style.backgroundColor = '#4CA763';
+btn.style.backgroundColor = '#00AA5B';
 btn.style.borderRadius = '12px';
 
 var spanRight = document.createElement('SPAN');
