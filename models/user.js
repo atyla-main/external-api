@@ -124,12 +124,11 @@ module.exports = (sequelize, DataTypes) => {
           isDate: true
         }
       },
-    },
-    {}
-    );
-    User.associate = models => {
-      User.belongsToMany(models.Role, {
-        through: 'UserRoles'
+    });
+    User.associate = function(models) {
+      User.hasMany(models.Order, {
+        as: 'orders',
+        foreignKey: 'userUuid'
       });
     };
     return User;

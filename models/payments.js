@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Payments = sequelize.define('Payments', {
-    stage: DataTypes.STRING
+    stage: DataTypes.STRING,
     stage: {
       allowNull: false,
       type: DataTypes.STRING
