@@ -130,6 +130,18 @@ module.exports = (sequelize, DataTypes) => {
         as: 'orders',
         foreignKey: 'userUuid'
       });
+      User.hasMany(models.UserSession, {
+        as: 'userSessions',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.PaymentMethodHistory, {
+        as: 'paymentMethodHistories',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Token, {
+        as: 'tokens',
+        foreignKey: 'userUuid'
+      });
     };
     return User;
   };
