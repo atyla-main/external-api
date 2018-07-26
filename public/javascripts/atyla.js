@@ -35,8 +35,8 @@ atylaButton.appendChild(btn);
 atylaButton.onclick = function() {
   var userId = localStorage.getItem('userId');
   var token = localStorage.getItem('token');
-  var merchant = '3bbfabda-7167-40b5-b907-b784094b7178';
-  var ico = 'e9c4cb6b-901c-4e52-906e-0bd940fe4f82';
+  var merchant = '71ece4c1-f7e0-4b8e-9055-ed1eaec35fec';
+  var ico = '6fe53ecb-e091-40c4-99a8-124aecfa3f9f';
   var userAgent = navigator.userAgent;
 
   var iframe = document.createElement('iframe');
@@ -52,6 +52,6 @@ atylaButton.onclick = function() {
   iframe.style.zIndex="100";
   iframe.width="100%";
   iframe.height="100%";
-  iframe.src = `http://localhost:3300/calculator/${merchant}?user=${userId}&token=${token}&ico=${ico}&userAgent=${userAgent}`;
+  iframe.src = `https://enigmatic-crag-91905.herokuapp.com/calculator/${merchant}?user=${userId}&token=${token}&ico=${ico}&userAgent=${userAgent}`;
   document.body.appendChild(iframe);
 }
