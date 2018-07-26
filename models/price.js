@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     amount: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.JSONB
     },
     endDate: {
       allowNull: false,
@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   Price.associate = function(models) {
-    Price.belongsTo(models.Merchant, {
-      foreignKey: 'merchantUuid'
+    Price.belongsTo(models.Ico, {
+      foreignKey: 'icoUuid'
     });
   };
   return Price;

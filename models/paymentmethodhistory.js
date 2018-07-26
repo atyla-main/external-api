@@ -2,9 +2,9 @@
 module.exports = (sequelize, DataTypes) => {
   var PaymentMethodHistory = sequelize.define('PaymentMethodHistory', {
     uuid: {
-      allowNull: false,
+      type: DataTypes.UUID,
       primaryKey: true,
-      type: DataTypes.UUID
+      defaultValue: DataTypes.UUIDV4
     },
     infos: {
       allowNull: false,

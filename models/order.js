@@ -48,6 +48,13 @@ module.exports = (sequelize, DataTypes) => {
     Order.belongsTo(models.Merchant, {
       foreignKey: 'merchantUuid'
     });
+    Order.belongsTo(models.Ico, {
+      foreignKey: 'icoUuid'
+    });
+    Order.hasOne(models.Payment, {
+      as: 'payment',
+      foreignKey: 'orderUuid'
+    });
   };
   return Order;
 };

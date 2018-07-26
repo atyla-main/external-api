@@ -1,0 +1,14 @@
+<body style="background-color: white;">
+  <h1>Calculator for <span style="color: red;">{{ico.name}}</span> tokens</h1>
+  <p>Right now one {{ico.coin}} = {{actualPrice.value}} {{actualPrice.currency}}</p>
+  <form action="{{url}}" method="POST">
+    <label>
+      How many tokens : <input type="number" name="token" />
+    </label>
+    <input type="submit" value="Calculate price">
+  </form>
+  {{#if value}}
+    <p>{{token}} {{ico.coin}} is worth {{value}} {{actualPrice.currency}} !<p>
+    <a href="{{buyUrl}}">Buy Now with atyla !</a>
+  {{/if}}
+</body>

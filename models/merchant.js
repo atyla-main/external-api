@@ -24,10 +24,6 @@ module.exports = (sequelize, DataTypes) => {
       as: 'icos',
       foreignKey: 'merchantUuid'
     });
-    Merchant.hasMany(models.Price, {
-      as: 'prices',
-      foreignKey: 'merchantUuid'
-    });
   };
   return Merchant;
 };

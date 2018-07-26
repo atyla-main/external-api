@@ -1,4 +1,3 @@
-const User = require('../../../models').User;
 const Processes = require('../methods/list');
 const views = require('../../../views/api/index');
 

@@ -87,6 +87,14 @@ module.exports = (sequelize, DataTypes) => {
       as: 'referrals',
       foreignKey: 'icoUuid'
     });
+    Ico.hasMany(models.Price, {
+      as: 'prices',
+      foreignKey: 'icoUuid'
+    });
+    Ico.hasMany(models.Order, {
+      as: 'orders',
+      foreignKey: 'icoUuid'
+    });
   };
 	return Ico;
 };

@@ -1,3 +1,8 @@
+var bodyParser = require('body-parser');
+var jwt = require('jsonwebtoken');
+var passport = require('passport');
+var passportJWT = require('passport-jwt');
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -11,6 +16,18 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var JwtStrategy = passportJWT.Strategy;
+var atylaJwt = require('./app/strategies/jwt-strategy.js');
+var ExtractJwt = passportJWT.ExtractJwt;
+var jwtOptions = {};
+
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
+jwtOptions.secretOrKey = 'maisonBleue';
+
+var strategy = atylaJwt.jwtStrategy(jwtOptions);
+
+passport.use(strategy);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -22,21 +39,21 @@ app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
+  indentedSyntax: false, // true = .sass and false = .scss
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api', api);
+app.use('/api', passport.authenticate('jwt', { session: false }), api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// error handler,
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
