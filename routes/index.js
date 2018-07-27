@@ -25,10 +25,6 @@ router.get('/login', function(req, res) {
 router.post('/login-payment', Login.loginPayment);
 router.post('/register-payment', Login.registerPayment);
 router.get('/register-payment', function(req, res) {
-  console.log("AMOUNT = ", req.query.amount);
-  console.log("ICO =", req.query.ico);
-  console.log("ORDER =", req.query.order);
-  console.log("SESSION =", req.query.session);
   res.render('register', {
     amount: req.query.amount,
     ico: req.query.ico,

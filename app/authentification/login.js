@@ -3,13 +3,11 @@ const apiv1Url = process.env.ATYLA_API_V1_LINK;
 
 module.exports = {
   login(req, res) {
-    console.log("apiv1 url = ", apiv1Url);
     request.post(`${apiv1Url}login`, { form: req.body }, function (err, httpResponse, body) {
       res.send({ data: JSON.parse(body) });
     });
   },
   loginPayment(req, res) {
-    console.log("apiv1 url = ", apiv1Url);
     request.post(`${apiv1Url}login`, { form: { data: { attributes: req.body } } }, function (err, httpResponse, body) {
       if (httpResponse.statusCode === 200) {
         res.redirect(
@@ -25,7 +23,6 @@ module.exports = {
     });
   },
   registerPayment(req, res) {
-    console.log("apiv1 url = ", apiv1Url);
     request.post(`${apiv1Url}users`, { form: { data: { attributes: req.body } } }, function (err, httpResponse, body) {
       if (httpResponse.statusCode === 200) {
         res.render('register', {
