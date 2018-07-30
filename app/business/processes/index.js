@@ -1,14 +1,17 @@
-const Processes = require('../methods/list');
 const views = require('../../../views/api/index');
+const Models = require('../../../models');
+const pluralize = require('pluralize')
+const _ = require('lodash');
 
 module.exports = {
   async index(req, res) {
-    let collection_name = req.params.collection;
-    let objs = await Processes[collection_name]['index']();
+    let collection = req.params.collection;
+    let collection_name = pluralize.singular(_.startCase(collection).replace(' ', ''));
+    let objs = await Models[collection_name].all();
     let payload = [];
 
     for (obj in objs) {
-      let record = await views.expose(objs[obj], collection_name);
+      let record = await views.expose(objs[obj], collection);
       payload.push(record.data);
     }
 
