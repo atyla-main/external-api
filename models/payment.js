@@ -36,10 +36,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isIn: [[
-          'crypto_wire',
-          'bank_wire',
-          'direct_debit',
-          'credit_card']]
+          'crypto',
+          'wire',
+          'paypal']]
       }
     },
     paymentData: {

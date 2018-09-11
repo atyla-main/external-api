@@ -7,6 +7,7 @@ const UserSession = require('./usersession/usersession');
 const PaymentMethodHistory = require('./paymentmethodhistory/paymentmethodhistory');
 const Payment = require('./payment/payment');
 const Transaction = require('./transaction/transaction');
+const Cryptocurrency = require('./cryptocurrency/cryptocurrency');
 
 module.exports = {
   icos: Ico,
@@ -17,5 +18,6 @@ module.exports = {
   'user-sessions': UserSession,
   'payment-method-histories': PaymentMethodHistory,
   payments: Payment,
-  transactions: Transaction
+  transactions: Transaction,
+  cryptocurrencies: Cryptocurrency
 };

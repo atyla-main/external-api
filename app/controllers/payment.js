@@ -56,7 +56,7 @@ module.exports = {
           },
           status: 'waiting',
           statusHistory: [{status: 'waiting', date: moment()}],
-          paymentMethod: 'bank_wire',
+          paymentMethod: 'wire',
           paymentData: {}
         });
 
