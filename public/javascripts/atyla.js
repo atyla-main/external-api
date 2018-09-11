@@ -33,14 +33,18 @@ btn.appendChild(spanGlobal);
 var atylaButton = document.getElementById('atylaDiv');
 atylaButton.appendChild(btn);
 atylaButton.onclick = function() {
+  document.body.style.overflowY = "hidden";
   var userId = localStorage.getItem('userId');
   var token = localStorage.getItem('token');
-  var merchant = '71ece4c1-f7e0-4b8e-9055-ed1eaec35fec';
-  var ico = '6fe53ecb-e091-40c4-99a8-124aecfa3f9f';
+  // var merchant = '71ece4c1-f7e0-4b8e-9055-ed1eaec35fec';
+  var merchant = '3bbfabda-7167-40b5-b907-b784094b7178';
+  // var ico = '6fe53ecb-e091-40c4-99a8-124aecfa3f9f';
+  var ico = 'e9c4cb6b-901c-4e52-906e-0bd940fe4f82';
   var userAgent = navigator.userAgent;
 
   var iframe = document.createElement('iframe');
   iframe.id = "atylaIframe";
+  iframe.style.backgroundColor = "rgba(0,0,0,0.4)";
   iframe.style.border="none";
   iframe.frameborder="0";
   iframe.style.top="0px";
@@ -52,6 +56,24 @@ atylaButton.onclick = function() {
   iframe.style.zIndex="100";
   iframe.width="100%";
   iframe.height="100%";
-  iframe.src = `https://enigmatic-crag-91905.herokuapp.com/calculator/${merchant}?user=${userId}&token=${token}&ico=${ico}&userAgent=${userAgent}`;
+  // iframe.src = `https://enigmatic-crag-91905.herokuapp.com/calculator/${merchant}?user=${userId}&token=${token}&ico=${ico}&userAgent=${userAgent}`;
+  iframe.src = `http://localhost:3001/calculator/${merchant}?user=${userId}&token=${token}&ico=${ico}&userAgent=${userAgent}`;
   document.body.appendChild(iframe);
+  var closeBtn = document.createElement("BUTTON");
+  closeBtn.id = "atylaCloseBtn";
+  closeBtn.style.top="5px";
+  closeBtn.style.left="50%";
+  closeBtn.style.height = "50px";
+  closeBtn.style.width = "200px";
+  closeBtn.style.position = "absolute";
+  closeBtn.style.marginLeft = "-100px";
+  closeBtn.style.zIndex = "200";
+  closeBtn.appendChild(document.createTextNode("Close X"));
+  document.body.appendChild(closeBtn);
+  closeBtn.onclick = function() {
+    var iframe = document.getElementById('atylaIframe');
+    iframe.remove();
+    var btn = document.getElementById('atylaCloseBtn');
+    btn.parentNode.removeChild(btn);
+  };
 }
