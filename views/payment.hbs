@@ -1,0 +1,31 @@
+<body style='background-color: white;'>
+  <h1>Payment</h1>
+  <p>Welcome to Payment</p>
+  <p>{{ico}}</p>
+  <p>{{amount}}</p>
+  <p>{{token}}</p>
+  <form action='/atyla-payment/{{ico}}?amount={{amount}}&token={{token}}&order={{order}}' method='POST'>
+    <label>
+      Account Name:
+      <input type='text' name='accountName'>
+    </label>
+    <label>
+      Address:
+      <input type='text' name='address'>
+    </label>
+    <label>
+      IBAN:
+      <input type='text' name='iban'>
+    </label>
+    <label>
+      Bank Name:
+      <input type='text' name='bankName'>
+    </label>
+    <label>
+      BIC:
+      <input type='text' name='bic'>
+    </label>
+    <input type='submit' value='Pay'>
+  </form>
+  <p>{{errors}}</p>
+</body>
